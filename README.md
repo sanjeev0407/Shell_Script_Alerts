@@ -15,3 +15,5 @@ Finally add a cronjob to automate this as shown below. It will run every 10 minu
 Note: As the script is scheduled to run once every 10 minutes, you will receive an email alert every 10 minutes.
 
 For example: if your system reaches the given limit after 16 minutes, you will receive an email alert in the second cycle, i.e. after 20 minutes (2nd 10 minute cycle).
+
+Reference: https://www.2daygeek.com/shell-script-monitor-disk-space-usage-linux/
