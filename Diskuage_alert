@@ -4,7 +4,7 @@ TO="username@gmail.com"
 RED='\033[0;31m' # selfexplanatory
 NC='\033[0m'     # No Color
 
-dusage=$(df -Ph / | sed s/%//g | awk '{ if($5 > 85) print $0;}')
+dusage=$(df -Ph / | sed s/%//g | awk '{ if($5 > 65) print $0;}')
 fscount=$(echo "$dusage" | wc -l)
 if [ $fscount -ge 2 ]; then
         echo "$dusage" | mailx -r "$TO" -s "$SUBJECT" "$TO"
