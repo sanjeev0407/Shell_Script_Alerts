@@ -1,0 +1,14 @@
+#!/bin/sh
+SUBJECT="ATTENTION: Disk Usage load is high on $(hostname) at $(date)"
+TO="username@gmail.com"
+RED='\033[0;31m' # selfexplanatory
+NC='\033[0m'     # No Color
+
+dusage=$(df -Ph / | sed s/%//g | awk '{ if($5 > 85) print $0;}')
+fscount=$(echo "$dusage" | wc -l)
+if [ $fscount -ge 2 ]; then
+        echo "$dusage" | mailx -r "$TO" -s "$SUBJECT" "$TO"
+        echo -e "${RED} Alert: Disk usage is above threshold ${NC}";
+else
+        echo -e "${RED} OK: Disk usage is under threshold ${NC}";
+fi
